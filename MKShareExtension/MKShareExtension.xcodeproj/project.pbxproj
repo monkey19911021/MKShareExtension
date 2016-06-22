@@ -13,7 +13,34 @@
 		FB19F6CF1D18EB6600F7D8EF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FB19F6CD1D18EB6600F7D8EF /* Main.storyboard */; };
 		FB19F6D11D18EB6600F7D8EF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FB19F6D01D18EB6600F7D8EF /* Assets.xcassets */; };
 		FB19F6D41D18EB6600F7D8EF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FB19F6D21D18EB6600F7D8EF /* LaunchScreen.storyboard */; };
+		FB19F6E31D18ECFB00F7D8EF /* ShareViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FB19F6E21D18ECFB00F7D8EF /* ShareViewController.m */; };
+		FB19F6E61D18ECFB00F7D8EF /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FB19F6E41D18ECFB00F7D8EF /* MainInterface.storyboard */; };
+		FB19F6EA1D18ECFB00F7D8EF /* MKShare.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = FB19F6DF1D18ECFB00F7D8EF /* MKShare.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		FB19F6E81D18ECFB00F7D8EF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FB19F6B91D18EB6600F7D8EF /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FB19F6DE1D18ECFB00F7D8EF;
+			remoteInfo = MKShare;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		FB19F6EE1D18ECFB00F7D8EF /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				FB19F6EA1D18ECFB00F7D8EF /* MKShare.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		FB19F6C11D18EB6600F7D8EF /* MKShareExtension.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MKShareExtension.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -26,10 +53,24 @@
 		FB19F6D01D18EB6600F7D8EF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FB19F6D31D18EB6600F7D8EF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FB19F6D51D18EB6600F7D8EF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FB19F6DF1D18ECFB00F7D8EF /* MKShare.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = MKShare.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		FB19F6E11D18ECFB00F7D8EF /* ShareViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ShareViewController.h; sourceTree = "<group>"; };
+		FB19F6E21D18ECFB00F7D8EF /* ShareViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ShareViewController.m; sourceTree = "<group>"; };
+		FB19F6E51D18ECFB00F7D8EF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
+		FB19F6E71D18ECFB00F7D8EF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FB3387EB1D1A88F500B043AF /* MKShareExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = MKShareExtension.entitlements; sourceTree = "<group>"; };
+		FB3387EC1D1A891A00B043AF /* MKShare.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = MKShare.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		FB19F6BE1D18EB6600F7D8EF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FB19F6DC1D18ECFB00F7D8EF /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -43,6 +84,7 @@
 			isa = PBXGroup;
 			children = (
 				FB19F6C31D18EB6600F7D8EF /* MKShareExtension */,
+				FB19F6E01D18ECFB00F7D8EF /* MKShare */,
 				FB19F6C21D18EB6600F7D8EF /* Products */,
 			);
 			sourceTree = "<group>";
@@ -51,6 +93,7 @@
 			isa = PBXGroup;
 			children = (
 				FB19F6C11D18EB6600F7D8EF /* MKShareExtension.app */,
+				FB19F6DF1D18ECFB00F7D8EF /* MKShare.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -58,6 +101,7 @@
 		FB19F6C31D18EB6600F7D8EF /* MKShareExtension */ = {
 			isa = PBXGroup;
 			children = (
+				FB3387EB1D1A88F500B043AF /* MKShareExtension.entitlements */,
 				FB19F6C71D18EB6600F7D8EF /* AppDelegate.h */,
 				FB19F6C81D18EB6600F7D8EF /* AppDelegate.m */,
 				FB19F6CA1D18EB6600F7D8EF /* ViewController.h */,
@@ -79,6 +123,18 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		FB19F6E01D18ECFB00F7D8EF /* MKShare */ = {
+			isa = PBXGroup;
+			children = (
+				FB3387EC1D1A891A00B043AF /* MKShare.entitlements */,
+				FB19F6E11D18ECFB00F7D8EF /* ShareViewController.h */,
+				FB19F6E21D18ECFB00F7D8EF /* ShareViewController.m */,
+				FB19F6E41D18ECFB00F7D8EF /* MainInterface.storyboard */,
+				FB19F6E71D18ECFB00F7D8EF /* Info.plist */,
+			);
+			path = MKShare;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -89,15 +145,34 @@
 				FB19F6BD1D18EB6600F7D8EF /* Sources */,
 				FB19F6BE1D18EB6600F7D8EF /* Frameworks */,
 				FB19F6BF1D18EB6600F7D8EF /* Resources */,
+				FB19F6EE1D18ECFB00F7D8EF /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				FB19F6E91D18ECFB00F7D8EF /* PBXTargetDependency */,
 			);
 			name = MKShareExtension;
 			productName = MKShareExtension;
 			productReference = FB19F6C11D18EB6600F7D8EF /* MKShareExtension.app */;
 			productType = "com.apple.product-type.application";
+		};
+		FB19F6DE1D18ECFB00F7D8EF /* MKShare */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FB19F6EB1D18ECFB00F7D8EF /* Build configuration list for PBXNativeTarget "MKShare" */;
+			buildPhases = (
+				FB19F6DB1D18ECFB00F7D8EF /* Sources */,
+				FB19F6DC1D18ECFB00F7D8EF /* Frameworks */,
+				FB19F6DD1D18ECFB00F7D8EF /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MKShare;
+			productName = MKShare;
+			productReference = FB19F6DF1D18ECFB00F7D8EF /* MKShare.appex */;
+			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
 
@@ -110,6 +185,21 @@
 				TargetAttributes = {
 					FB19F6C01D18EB6600F7D8EF = {
 						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = DM7XAFH5UF;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+						};
+					};
+					FB19F6DE1D18ECFB00F7D8EF = {
+						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = DM7XAFH5UF;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -127,6 +217,7 @@
 			projectRoot = "";
 			targets = (
 				FB19F6C01D18EB6600F7D8EF /* MKShareExtension */,
+				FB19F6DE1D18ECFB00F7D8EF /* MKShare */,
 			);
 		};
 /* End PBXProject section */
@@ -139,6 +230,14 @@
 				FB19F6D41D18EB6600F7D8EF /* LaunchScreen.storyboard in Resources */,
 				FB19F6D11D18EB6600F7D8EF /* Assets.xcassets in Resources */,
 				FB19F6CF1D18EB6600F7D8EF /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FB19F6DD1D18ECFB00F7D8EF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FB19F6E61D18ECFB00F7D8EF /* MainInterface.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -155,7 +254,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		FB19F6DB1D18ECFB00F7D8EF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FB19F6E31D18ECFB00F7D8EF /* ShareViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		FB19F6E91D18ECFB00F7D8EF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = FB19F6DE1D18ECFB00F7D8EF /* MKShare */;
+			targetProxy = FB19F6E81D18ECFB00F7D8EF /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		FB19F6CD1D18EB6600F7D8EF /* Main.storyboard */ = {
@@ -172,6 +287,14 @@
 				FB19F6D31D18EB6600F7D8EF /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		FB19F6E41D18ECFB00F7D8EF /* MainInterface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FB19F6E51D18ECFB00F7D8EF /* Base */,
+			);
+			name = MainInterface.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -263,6 +386,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = MKShareExtension/MKShareExtension.entitlements;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = MKShareExtension/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.donlinks.MKShareExtension;
@@ -274,10 +402,47 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = MKShareExtension/MKShareExtension.entitlements;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = MKShareExtension/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.donlinks.MKShareExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		FB19F6EC1D18ECFB00F7D8EF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = MKShare/MKShare.entitlements;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
+				INFOPLIST_FILE = MKShare/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.donlinks.MKShareExtension.MKShare;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		FB19F6ED1D18ECFB00F7D8EF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = MKShare/MKShare.entitlements;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
+				INFOPLIST_FILE = MKShare/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.donlinks.MKShareExtension.MKShare;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
 			};
 			name = Release;
 		};
@@ -300,6 +465,16 @@
 				FB19F6DA1D18EB6600F7D8EF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FB19F6EB1D18ECFB00F7D8EF /* Build configuration list for PBXNativeTarget "MKShare" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FB19F6EC1D18ECFB00F7D8EF /* Debug */,
+				FB19F6ED1D18ECFB00F7D8EF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
