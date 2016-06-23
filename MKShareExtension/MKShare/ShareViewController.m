@@ -8,8 +8,6 @@
 
 #import "ShareViewController.h"
 
-#define APP_ID (@"shareextrension")
-
 static NSInteger const maxCharactersAllowed =  140;//字符数上限
 
 @interface ShareViewController ()
@@ -18,8 +16,6 @@ static NSInteger const maxCharactersAllowed =  140;//字符数上限
 
 @implementation ShareViewController
 {
-    NSURLSession *shareSession;
-    
     NSMutableArray<UIImage *> *attachImageArray;
     NSMutableArray<NSString *> *attachStringArray;
     NSMutableArray<NSURL *> *attachURLArray;
@@ -70,6 +66,8 @@ static NSInteger const maxCharactersAllowed =  140;//字符数上限
 -(void)didSelectCancel
 {
     NSError *error = [NSError errorWithDomain:@"MK" code:500 userInfo:@{@"error": @"用户取消"}];
+    
+    //取消分享请求
     [self.extensionContext cancelRequestWithError:error];
 }
 
@@ -79,10 +77,6 @@ static NSInteger const maxCharactersAllowed =  140;//字符数上限
     SLComposeSheetConfigurationItem *item = [SLComposeSheetConfigurationItem new];
     item.title = @"预览";
     item.tapHandler = ^(void){
-        NSLog(@"image: %@", attachImageArray);
-        NSLog(@"URL: %@", attachURLArray);
-        NSLog(@"sring: %@", attachStringArray);
-        NSLog(@"content: %@", self.contentText);
         
         UIViewController *ctrl = [UIViewController new];
         UIWebView *webView = [[UIWebView alloc] initWithFrame: ctrl.view.bounds];
@@ -142,13 +136,11 @@ static NSInteger const maxCharactersAllowed =  140;//字符数上限
 //上传数据
 - (void)uploadData
 {
-    if(!shareSession){
-        NSString *configName = @"com.donlinks.MKShareExtension.BackgroundSessionConfig";
-        NSURLSessionConfiguration *sessionConfig = [NSURLSessionConfiguration backgroundSessionConfigurationWithIdentifier: configName];
-        sessionConfig.sharedContainerIdentifier = @"group.MKShareExtension";
-        
-        shareSession = [NSURLSession sessionWithConfiguration: sessionConfig];
-    }
+    NSString *configName = @"com.donlinks.MKShareExtension.BackgroundSessionConfig";
+    NSURLSessionConfiguration *sessionConfig = [NSURLSessionConfiguration backgroundSessionConfigurationWithIdentifier: configName];
+    sessionConfig.sharedContainerIdentifier = @"group.MKShareExtension";
+    
+    NSURLSession *shareSession = [NSURLSession sessionWithConfiguration: sessionConfig];
     
     NSURLSessionDataTask *task = [shareSession dataTaskWithRequest: [self urlRequestWithShareData]];
     [task resume];

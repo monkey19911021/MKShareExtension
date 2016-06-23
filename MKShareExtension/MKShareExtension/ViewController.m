@@ -40,7 +40,6 @@
         }
     };
     [self presentViewController:ctrl animated:YES completion:nil];
-    
 }
 
 - (void)didReceiveMemoryWarning {
