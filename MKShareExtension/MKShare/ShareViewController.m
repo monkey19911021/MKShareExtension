@@ -18,6 +18,8 @@ static NSInteger const maxCharactersAllowed =  140;//字符数上限
 
 @implementation ShareViewController
 {
+    NSURLSession *shareSession;
+    
     NSMutableArray<UIImage *> *attachImageArray;
     NSMutableArray<NSString *> *attachStringArray;
     NSMutableArray<NSURL *> *attachURLArray;
@@ -76,13 +78,20 @@ static NSInteger const maxCharactersAllowed =  140;//字符数上限
     
     SLComposeSheetConfigurationItem *item = [SLComposeSheetConfigurationItem new];
     item.title = @"预览";
-    __weak SLComposeSheetConfigurationItem *weakItem = item;
     item.tapHandler = ^(void){
-        weakItem.valuePending = YES;
         NSLog(@"image: %@", attachImageArray);
         NSLog(@"URL: %@", attachURLArray);
         NSLog(@"sring: %@", attachStringArray);
         NSLog(@"content: %@", self.contentText);
+        
+        UIViewController *ctrl = [UIViewController new];
+        UIWebView *webView = [[UIWebView alloc] initWithFrame: ctrl.view.bounds];
+        [webView loadHTMLString:[[self uploadInfo] description] baseURL:nil];
+        webView.backgroundColor = [UIColor clearColor];
+        webView.scalesPageToFit = YES;
+        [ctrl.view addSubview:webView];
+        
+        [self.navigationController pushViewController:ctrl animated:YES];
         
     };
     return @[item];
@@ -133,12 +142,15 @@ static NSInteger const maxCharactersAllowed =  140;//字符数上限
 //上传数据
 - (void)uploadData
 {
-    NSString *configName = @"com.donlinks.MKShareExtension.BackgroundSessionConfig";
-    NSURLSessionConfiguration *sessionConfig = [NSURLSessionConfiguration backgroundSessionConfigurationWithIdentifier: configName];
-    sessionConfig.sharedContainerIdentifier = @"group.MKShareExtension";
+    if(!shareSession){
+        NSString *configName = @"com.donlinks.MKShareExtension.BackgroundSessionConfig";
+        NSURLSessionConfiguration *sessionConfig = [NSURLSessionConfiguration backgroundSessionConfigurationWithIdentifier: configName];
+        sessionConfig.sharedContainerIdentifier = @"group.MKShareExtension";
+        
+        shareSession = [NSURLSession sessionWithConfiguration: sessionConfig];
+    }
     
-    NSURLSession *session = [NSURLSession sessionWithConfiguration: sessionConfig];
-    NSURLSessionDataTask *task = [session dataTaskWithRequest: [self urlRequestWithShareData]];
+    NSURLSessionDataTask *task = [shareSession dataTaskWithRequest: [self urlRequestWithShareData]];
     [task resume];
 }
 
@@ -154,6 +166,25 @@ static NSInteger const maxCharactersAllowed =  140;//字符数上限
     [request setHTTPMethod: @"POST"];
     
     //设置 JSON 数据
+    NSDictionary *dic = [self uploadInfo];
+    
+    NSError *error = nil;
+    NSData *uplodData = [NSJSONSerialization dataWithJSONObject:dic
+                                                        options:NSJSONWritingPrettyPrinted
+                                                          error: &error];
+    if(uplodData){
+        
+        request.HTTPBody = uplodData;
+        
+    }else{
+        NSLog(@"JSONError: %@", error.localizedDescription);
+    }
+    
+    return request;
+}
+
+- (NSDictionary *)uploadInfo
+{
     NSMutableDictionary *dic = @{}.mutableCopy;
     NSMutableArray *imgInfoArray = @[].mutableCopy;
     for(UIImage *image in attachImageArray){
@@ -168,18 +199,8 @@ static NSInteger const maxCharactersAllowed =  140;//字符数上限
     [dic setObject: urlArray forKey: @"URL"];
     [dic setObject: attachStringArray forKey: @"extraString"];
     [dic setObject: imgInfoArray forKey: @"image"];
-    
-    NSError *error = nil;
-    NSData *uplodData = [NSJSONSerialization dataWithJSONObject:dic options:NSJSONWritingPrettyPrinted error: &error];
-    if(uplodData){
-        
-        request.HTTPBody = uplodData;
-        
-    }else{
-        NSLog(@"JSONError: %@", error.localizedDescription);
-    }
-    
-    return request;
+    [dic setObject: self.contentText forKey: @"contentText"];
+    return dic;
 }
 
 - (NSDictionary *)imgInfo:(UIImage *)image
